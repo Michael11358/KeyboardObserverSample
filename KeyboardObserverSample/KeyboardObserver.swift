@@ -8,11 +8,12 @@
 
 import UIKit
 
+/// Use this class to subscribe to system keyboard notifications.
 final class KeyboardObserver {
 
     // MARK: Properties
     private let notificationCenter: NotificationCenter
-    private var obervers = [NSObjectProtocol]()
+    private var observers = [NSObjectProtocol]()
 
     // MARK: Initialization
     init(notificationCenter: NotificationCenter = .default) {
@@ -20,7 +21,7 @@ final class KeyboardObserver {
     }
     
     deinit {
-        obervers.forEach { notificationCenter.removeObserver($0) }
+        observers.forEach { notificationCenter.removeObserver($0) }
     }
 
     // MARK: Public
@@ -50,6 +51,6 @@ private extension KeyboardObserver {
                                                       object: nil,
                                                       queue: .main,
                                                       using: handler)
-        obervers.append(observer)
+        observers.append(observer)
     }
 }
